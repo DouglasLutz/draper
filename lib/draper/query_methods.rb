@@ -6,6 +6,11 @@ module Draper
     def method_missing(method, *args, &block)
       return super unless strategy.allowed? method
 
+      print "Method: "
+      p method
+      print "Arguments: "
+      p args
+
       object.send(method, *args, &block).decorate
     end
 
